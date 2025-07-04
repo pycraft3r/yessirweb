@@ -1,0 +1,657 @@
+/* Liquid Navbar Styles */
+.liquid-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 17, 34, 0.95) 0%,
+    rgba(0, 51, 102, 0.85) 50%,
+    rgba(0, 85, 164, 0.75) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.liquid-navbar.scrolled {
+  padding: 10px 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 17, 34, 0.98) 0%,
+    rgba(0, 51, 102, 0.95) 50%,
+    rgba(0, 85, 164, 0.85) 100%
+  );
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Liquid Background Animation */
+.liquid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.liquid-wave {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  opacity: 0.3;
+}
+
+/* Logo Styles */
+.liquid-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logo-wave {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: logoWaveRotate 8s linear infinite;
+}
+
+.logo-bg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes logoWaveRotate {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #FFD700, #00D4FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.logo-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: -2px;
+}
+
+/* Liquid Blob Indicator */
+.liquid-blob {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.3) 0%,
+    rgba(255, 215, 0, 0.2) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(8px);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* Desktop Navigation */
+.liquid-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.liquid-menu-item {
+  margin: 0 8px;
+  position: relative;
+}
+
+.liquid-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.liquid-link:hover {
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.liquid-menu-item.active .liquid-link {
+  background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(255, 215, 0, 0.2));
+  color: #FFFFFF;
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+  filter: grayscale(0.2);
+  transition: filter 0.3s ease;
+}
+
+.liquid-link:hover .nav-icon {
+  filter: grayscale(0);
+}
+
+.nav-text {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Liquid Effect */
+.nav-liquid-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.liquid-link:hover .nav-liquid-effect {
+  left: 100%;
+}
+
+/* Ripple Effect */
+.nav-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.6) 0%,
+    rgba(255, 215, 0, 0.4) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Controls */
+.navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 10;
+}
+
+.liquid-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.liquid-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.liquid-btn:hover::before {
+  left: 100%;
+}
+
+/* Language Toggle */
+.language-toggle {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.lang-option {
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.lang-option.active {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
+}
+
+.lang-divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 8px;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  padding: 10px;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 20px;
+  height: 14px;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 1px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Mobile Menu */
+.mobile-liquid-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 17, 34, 0.98) 0%,
+    rgba(0, 51, 102, 0.95) 100%
+  );
+  backdrop-filter: blur(30px);
+  z-index: 999;
+  transition: right 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow-y: auto;
+}
+
+.mobile-liquid-menu.active {
+  right: 0;
+}
+
+.mobile-menu-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.liquid-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #00D4FF, transparent);
+  border-radius: 50%;
+  animation: particleFloat 6s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+.mobile-menu-content {
+  padding: 100px 30px 50px;
+  position: relative;
+  z-index: 10;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav-item {
+  margin: 0 0 20px;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(255, 215, 0, 0.2));
+  color: #FFFFFF;
+  transform: translateX(10px);
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+}
+
+.mobile-nav-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+.mobile-nav-text {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.mobile-menu-footer {
+  margin-top: 50px;
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-footer h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #FFD700, #00D4FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.mobile-menu-footer p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .liquid-menu-item {
+    margin: 0 5px;
+  }
+  
+  .liquid-link {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-text {
+    display: none;
+  }
+  
+  .nav-icon {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 20px;
+  }
+  
+  .liquid-menu {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .logo-title {
+    font-size: 1.5rem;
+  }
+  
+  .logo-subtitle {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+  
+  .logo-img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+  }
+  
+  .logo-title {
+    font-size: 1.3rem;
+  }
+  
+  .logo-subtitle {
+    font-size: 0.55rem;
+  }
+  
+  .mobile-liquid-menu {
+    max-width: 100%;
+  }
+  
+  .mobile-menu-content {
+    padding: 80px 20px 30px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-navbar,
+  .liquid-link,
+  .liquid-btn,
+  .mobile-nav-link,
+  .logo-wave,
+  .particle {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .liquid-navbar {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px solid #FFFFFF;
+  }
+  
+  .liquid-link,
+  .liquid-btn {
+    border: 2px solid #FFFFFF;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .logo-title {
+    -webkit-text-fill-color: #FFFFFF;
+  }
+}
+
+/* Focus states */
+.liquid-link:focus-visible,
+.liquid-btn:focus-visible,
+.mobile-nav-link:focus-visible {
+  outline: 2px solid #00D4FF;
+  outline-offset: 2px;
+}
+
+/* Performance optimizations */
+.liquid-navbar *,
+.mobile-liquid-menu * {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.liquid-blob,
+.nav-liquid-effect,
+.nav-ripple {
+  transform: translateZ(0);
+}
