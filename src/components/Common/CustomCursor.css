@@ -1,0 +1,186 @@
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 85, 164, 0.1);
+  border: 2px solid var(--medical-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-top);
+  transform: translate(-50%, -50%);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+  backdrop-filter: blur(5px);
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--medical-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-top);
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+
+.cursor-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.cursor-plus {
+  width: 20px;
+  height: 20px;
+  color: var(--medical-blue);
+}
+
+/* Hover States */
+.custom-cursor.cursor-hover {
+  background: rgba(0, 85, 164, 0.2);
+  border-color: var(--accent-gold);
+}
+
+.custom-cursor.cursor-hover .cursor-content {
+  opacity: 0;
+}
+
+.custom-cursor.cursor-medical {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--accent-gold);
+  animation: medicalPulse 1.5s ease-in-out infinite;
+}
+
+.custom-cursor.cursor-medical .cursor-content {
+  opacity: 1;
+}
+
+.custom-cursor.cursor-medical .cursor-plus {
+  color: var(--accent-gold);
+  animation: rotatePlus 2s linear infinite;
+}
+
+/* Animations */
+@keyframes medicalPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+}
+
+@keyframes rotatePlus {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text cursor variant */
+.custom-cursor.cursor-text {
+  width: 2px;
+  height: 24px;
+  background: var(--medical-blue);
+  border-radius: 2px;
+  border: none;
+}
+
+/* Loading cursor variant */
+.custom-cursor.cursor-loading {
+  border: 2px solid rgba(0, 85, 164, 0.3);
+  border-top: 2px solid var(--medical-blue);
+  animation: spin 1s linear infinite;
+}
+
+/* Hide default cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+  
+  /* Exception for input fields */
+  input, textarea {
+    cursor: text !important;
+  }
+}
+
+/* Hide custom cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor,
+  .cursor-dot {
+    display: none;
+  }
+  
+  /* Restore default cursors on touch devices */
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Accessibility - respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .cursor-dot {
+    transition: none;
+    animation: none;
+  }
+  
+  .custom-cursor.cursor-medical {
+    animation: none;
+  }
+  
+  .cursor-plus {
+    animation: none;
+  }
+}
+
+/* Performance optimizations */
+.custom-cursor,
+.cursor-dot {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .custom-cursor {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: #000;
+  }
+  
+  .cursor-dot {
+    background: #000;
+  }
+  
+  .cursor-plus {
+    color: #000;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .custom-cursor {
+    mix-blend-mode: exclusion;
+  }
+  
+  .cursor-dot {
+    mix-blend-mode: exclusion;
+  }
+}
