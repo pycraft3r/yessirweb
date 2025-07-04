@@ -1,0 +1,238 @@
+/* Dark Mode Styles */
+
+/* Base styles for dark mode */
+body.dark-mode {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar in dark mode */
+body.dark-mode .liquid-navbar {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(20, 20, 20, 0.85) 50%,
+    rgba(30, 30, 30, 0.75) 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .liquid-navbar.scrolled {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.98) 0%,
+    rgba(20, 20, 20, 0.95) 50%,
+    rgba(30, 30, 30, 0.85) 100%
+  );
+}
+
+/* Navigation links */
+body.dark-mode .liquid-link {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark-mode .liquid-link:hover {
+  color: #00D4FF;
+}
+
+/* Buttons */
+body.dark-mode .btn-primary {
+  background: linear-gradient(45deg, #00D4FF, #0080FF);
+  color: white;
+}
+
+body.dark-mode .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Cards and sections */
+body.dark-mode .card,
+body.dark-mode .section {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Product cards */
+body.dark-mode .product-card {
+  background: rgba(30, 30, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .product-card:hover {
+  border-color: #00D4FF;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+/* Modals */
+body.dark-mode .product-modal .modal-content {
+  background: rgba(20, 20, 20, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Input fields */
+body.dark-mode input,
+body.dark-mode textarea {
+  background: rgba(30, 30, 30, 0.8);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus {
+  border-color: #00D4FF;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+/* AI Assistant in dark mode */
+body.dark-mode .gemini-assistant {
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .assistant-header {
+  background: rgba(30, 30, 30, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .message.user {
+  background: rgba(0, 212, 255, 0.2);
+}
+
+body.dark-mode .message.assistant {
+  background: rgba(50, 50, 50, 0.6);
+}
+
+body.dark-mode .message-input {
+  background: rgba(30, 30, 30, 0.8);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollbars in dark mode */
+body.dark-mode ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.8);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 6px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(80, 80, 80, 0.8);
+}
+
+/* Text colors */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #ffffff;
+}
+
+body.dark-mode p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Links */
+body.dark-mode a {
+  color: #00D4FF;
+}
+
+body.dark-mode a:hover {
+  color: #FFD700;
+}
+
+/* Category cards */
+body.dark-mode .category-card {
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .category-card:hover,
+body.dark-mode .category-card.active {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00D4FF;
+}
+
+/* Hero sections */
+body.dark-mode .hero-section {
+  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+}
+
+/* Features */
+body.dark-mode .feature-card {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .feature-card:hover {
+  background: rgba(40, 40, 40, 0.8);
+  border-color: #00D4FF;
+}
+
+/* Footer */
+body.dark-mode footer {
+  background: rgba(10, 10, 10, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logo link */
+body.dark-mode .logo-link {
+  text-decoration: none;
+}
+
+/* Collection page specifics */
+body.dark-mode .collection-hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+body.dark-mode .search-input {
+  background: rgba(30, 30, 30, 0.8);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .spec-tag {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00D4FF;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* Premium gradient text in dark mode */
+body.dark-mode .text-premium {
+  background: linear-gradient(135deg, #00D4FF 0%, #FFD700 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* CTA sections */
+body.dark-mode .cta-section {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+}
+
+/* Loading skeleton in dark mode */
+body.dark-mode .skeleton {
+  background: linear-gradient(90deg, rgba(30, 30, 30, 0.8) 25%, rgba(50, 50, 50, 0.8) 50%, rgba(30, 30, 30, 0.8) 75%);
+  background-size: 200% 100%;
+}

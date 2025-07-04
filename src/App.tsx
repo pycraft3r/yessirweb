@@ -12,9 +12,13 @@ import Contact from './pages/Contact'
 import './App.css'
 
 function App() {
-  const [showOpening, setShowOpening] = useState(true)
+  const [showOpening, setShowOpening] = useState(false) // Disabled opening animation
   const [currentLanguage, setCurrentLanguage] = useState<'tr' | 'en'>('tr')
   const [showAI, setShowAI] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode')
+    return saved ? JSON.parse(saved) : false
+  })
 
   // Show AI assistant after opening completes
   useEffect(() => {
@@ -34,6 +38,20 @@ function App() {
     setCurrentLanguage(lang)
   }
 
+  const handleThemeToggle = () => {
+    setIsDarkMode(!isDarkMode)
+  }
+
+  // Apply dark mode class to body
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode')
+    } else {
+      document.body.classList.remove('dark-mode')
+    }
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode))
+  }, [isDarkMode])
+
   return (
     <Router>
       <div className="app">
@@ -45,7 +63,11 @@ function App() {
         {/* Main Application */}
         {!showOpening && (
           <>
-            <LiquidNavbar onLanguageChange={handleLanguageChange} />
+            <LiquidNavbar 
+              onLanguageChange={handleLanguageChange} 
+              isDarkMode={isDarkMode}
+              onThemeToggle={handleThemeToggle}
+            />
             <main>
               <Routes>
                 <Route path="/" element={<Home language={currentLanguage} />} />
@@ -63,6 +85,21 @@ function App() {
                 language={currentLanguage} 
                 onClose={() => setShowAI(false)} 
               />
+            )}
+            
+            {/* AI Assistant Toggle Button */}
+            {!showAI && (
+              <button
+                className="ai-toggle-btn"
+                onClick={() => setShowAI(true)}
+                aria-label="Open AI Assistant"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+              </button>
             )}
           </>
         )}

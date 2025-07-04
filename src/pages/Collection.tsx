@@ -337,8 +337,27 @@ const Collection: React.FC<CollectionProps> = ({ language }) => {
                 </div>
                 
                 <div className="modal-actions">
-                  <button className="btn-primary">{t.downloadCatalog}</button>
-                  <button className="btn-secondary">{t.requestQuote}</button>
+                  <button 
+                    className="btn-primary"
+                    onClick={() => {
+                      // Download catalog functionality
+                      const link = document.createElement('a')
+                      link.href = '/assets/catalogs/medcezir-catalog.pdf'
+                      link.download = 'Medcezir-Export-Catalog.pdf'
+                      link.click()
+                    }}
+                  >
+                    {t.downloadCatalog}
+                  </button>
+                  <button 
+                    className="btn-secondary"
+                    onClick={() => {
+                      // Navigate to contact page for quote
+                      window.location.href = '/contact'
+                    }}
+                  >
+                    {t.requestQuote}
+                  </button>
                 </div>
               </div>
             </div>
@@ -355,7 +374,17 @@ const Collection: React.FC<CollectionProps> = ({ language }) => {
               '5000+ premium medikal cihaz kataloğumuzu indirin' : 
               'Download our catalog of 5000+ premium medical devices'
             }</p>
-            <button className="btn-premium">{t.downloadCatalog}</button>
+            <button 
+              className="btn-premium"
+              onClick={() => {
+                const link = document.createElement('a')
+                link.href = '/assets/catalogs/medcezir-catalog.pdf'
+                link.download = 'Medcezir-Export-Catalog.pdf'
+                link.click()
+              }}
+            >
+              {t.downloadCatalog}
+            </button>
           </div>
         </div>
       </section>

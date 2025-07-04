@@ -271,10 +271,7 @@ const LoadingProgress = () => {
 // Main Component
 const OceanWaveOpening = ({ onComplete }: { onComplete: () => void }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  // const [isLoaded, setIsLoaded] = useState(false) // Removed unused state
   const [showContent, setShowContent] = useState(false)
-  
-  // Removed unused isLoaded effect
   
   const handleSceneComplete = () => {
     setShowContent(true)

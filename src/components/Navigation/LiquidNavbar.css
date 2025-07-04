@@ -325,6 +325,26 @@
   margin: 0 8px;
 }
 
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 45px;
+  height: 45px;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(180deg);
+}
+
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
   display: none;

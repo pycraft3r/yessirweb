@@ -7,3 +7,60 @@ main {
   position: relative;
   z-index: 1;
 }
+
+/* AI Assistant Toggle Button */
+.ai-toggle-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00D4FF 0%, #FFD700 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.ai-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
+}
+
+.ai-toggle-btn svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(0, 212, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-toggle-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .ai-toggle-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+}

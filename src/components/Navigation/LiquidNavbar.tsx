@@ -19,19 +19,22 @@ interface LiquidNavbarProps {
   logo?: string
   logoAlt?: string
   onLanguageChange?: (lang: 'tr' | 'en') => void
+  isDarkMode?: boolean
+  onThemeToggle?: () => void
 }
 
 const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
   logo = '/assets/images/medcezir-logo.svg',
   logoAlt = 'Medcezir Export',
-  onLanguageChange
+  onLanguageChange,
+  isDarkMode = false,
+  onThemeToggle
 }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
   const [activeItem, setActiveItem] = useState('home')
   const [currentLanguage, setCurrentLanguage] = useState<'tr' | 'en'>('tr')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }) // Removed unused state
   
   const navRef = useRef<HTMLElement>(null)
   const liquidBlobRef = useRef<HTMLDivElement>(null)
@@ -57,8 +60,6 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  // Mouse tracking for liquid effects - removed unused functionality
 
   // Initial animations
   useEffect(() => {
@@ -234,31 +235,33 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
         </div>
 
         {/* Logo */}
-        <div 
-          ref={logoRef}
-          className="liquid-logo"
-          onMouseEnter={handleLogoHover}
-          onMouseLeave={handleLogoLeave}
-        >
-          <div className="logo-container">
-            <div className="logo-wave">
-              <svg viewBox="0 0 100 100" className="logo-bg">
-                <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.1"/>
-                <defs>
-                  <linearGradient id="logoGradient">
-                    <stop offset="0%" stopColor="#00D4FF"/>
-                    <stop offset="100%" stopColor="#FFD700"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <img src={logo} alt={logoAlt} className="logo-img"/>
-            <div className="logo-text">
-              <span className="logo-title">MEDCEZIR</span>
-              <span className="logo-subtitle">EXPORT</span>
+        <Link to="/" className="logo-link">
+          <div 
+            ref={logoRef}
+            className="liquid-logo"
+            onMouseEnter={handleLogoHover}
+            onMouseLeave={handleLogoLeave}
+          >
+            <div className="logo-container">
+              <div className="logo-wave">
+                <svg viewBox="0 0 100 100" className="logo-bg">
+                  <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.1"/>
+                  <defs>
+                    <linearGradient id="logoGradient">
+                      <stop offset="0%" stopColor="#00D4FF"/>
+                      <stop offset="100%" stopColor="#FFD700"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <img src={logo} alt={logoAlt} className="logo-img"/>
+              <div className="logo-text">
+                <span className="logo-title">MEDCEZIR</span>
+                <span className="logo-subtitle">EXPORT</span>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* Liquid Blob Indicator */}
         <div ref={liquidBlobRef} className="liquid-blob"></div>
@@ -296,6 +299,24 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
             <span className={`lang-option ${currentLanguage === 'tr' ? 'active' : ''}`}>TR</span>
             <div className="lang-divider"></div>
             <span className={`lang-option ${currentLanguage === 'en' ? 'active' : ''}`}>EN</span>
+          </button>
+
+          {/* Dark Mode Toggle */}
+          <button 
+            className="theme-toggle liquid-btn"
+            onClick={onThemeToggle}
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3V1M12 23V21M4.22 4.22L2.81 2.81M21.19 21.19L19.78 19.78M1 12H3M21 12H23M4.22 19.78L2.81 21.19M21.19 2.81L19.78 4.22" stroke="currentColor" strokeWidth="2"/>
+                <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+              </svg>
+            )}
           </button>
 
           {/* Mobile Menu Toggle */}
