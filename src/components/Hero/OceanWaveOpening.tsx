@@ -173,7 +173,6 @@ const FloatingLogo = ({ isVisible, onComplete }: { isVisible: boolean, onComplet
           lineHeight={1}
           letterSpacing={0.02}
           textAlign="center"
-          font="/fonts/Playfair-Display-Bold.woff"
           color="#FFD700"
           position={[0, 2, 0]}
         >
@@ -185,7 +184,6 @@ const FloatingLogo = ({ isVisible, onComplete }: { isVisible: boolean, onComplet
           lineHeight={1}
           letterSpacing={0.1}
           textAlign="center"
-          font="/fonts/Inter-Regular.woff"
           color="#FFFFFF"
           position={[0, 1, 0]}
         >
@@ -197,7 +195,6 @@ const FloatingLogo = ({ isVisible, onComplete }: { isVisible: boolean, onComplet
           lineHeight={1}
           letterSpacing={0.05}
           textAlign="center"
-          font="/fonts/Inter-Light.woff"
           color="#B8E6FF"
           position={[0, 0.5, 0]}
         >
@@ -325,7 +322,12 @@ const OceanWaveOpening = ({ onComplete }: { onComplete: () => void }) => {
       {/* Skip Button */}
       <button 
         className="skip-opening"
-        onClick={() => setShowContent(true)}
+        onClick={() => {
+          setShowContent(true)
+          setTimeout(() => {
+            onComplete()
+          }, 100)
+        }}
         aria-label="Skip opening animation"
       >
         Skip →
