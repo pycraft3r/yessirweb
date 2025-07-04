@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './LiquidNavbar.css'
@@ -26,6 +27,7 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
   onLanguageChange
 }) => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const location = useLocation()
   const [activeItem, setActiveItem] = useState('home')
   const [currentLanguage, setCurrentLanguage] = useState<'tr' | 'en'>('tr')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -90,6 +92,15 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
       }
     })
   }, [])
+
+  // Update active item based on current route
+  useEffect(() => {
+    const currentPath = location.pathname
+    const activeNav = navItems.find(item => item.href === currentPath)
+    if (activeNav) {
+      setActiveItem(activeNav.id)
+    }
+  }, [location.pathname])
 
   // Liquid blob animation
   useEffect(() => {
@@ -263,13 +274,13 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
               onMouseLeave={handleMenuItemLeave}
               onClick={() => handleMenuItemClick(item.id)}
             >
-              <a href={item.href} className="liquid-link">
+              <Link to={item.href} className="liquid-link">
                 <span className="nav-icon">{item.icon}</span>
                 <span className="nav-text">
                   {currentLanguage === 'tr' ? item.label : item.labelEn}
                 </span>
                 <div className="nav-liquid-effect"></div>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -321,8 +332,8 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
               <li key={item.id} className="mobile-nav-item" style={{
                 animationDelay: `${index * 0.1}s`
               }}>
-                <a 
-                  href={item.href}
+                <Link 
+                  to={item.href}
                   className={`mobile-nav-link ${item.id === activeItem ? 'active' : ''}`}
                   onClick={() => handleMenuItemClick(item.id)}
                 >
@@ -330,7 +341,7 @@ const LiquidNavbar: React.FC<LiquidNavbarProps> = ({
                   <span className="mobile-nav-text">
                     {currentLanguage === 'tr' ? item.label : item.labelEn}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
